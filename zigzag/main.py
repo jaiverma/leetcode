@@ -11,12 +11,17 @@ def f(n, r):
             n -= r - 2
     return c
 
+def idx(i, j, c):
+    return (c + 1) * i + j
+
 def main():
     s = 'PAYPALISHIRING'
-    r = 4
+    r = 3
     n = len(s)
     c = f(n, r)
-    a = [[' ' for _ in range(c)] for x in range(r)]
+    a = [' ' for _ in range((c + 1) * r)]
+    for i in range(r):
+        a[idx(i, c, c)] = '\n'
 
     i = 0
     j = 0
@@ -25,18 +30,18 @@ def main():
         if (j % (r - 1)) == 0:
             i = 0
             while i < r and x < n:
-                a[i][j] = s[x]
+                a[idx(i, j, c)] = s[x]
                 i += 1
                 x += 1
             i -= 1
         else:
             i -= 1
-            a[i][j] = s[x]
+            a[idx(i, j, c)] = s[x]
             x += 1
         j += 1
     for i in range(r):
-        for j in range(c):
-            sys.stdout.write(a[i][j])
-        sys.stdout.write('\n')
+        for j in range(c + 1):
+            sys.stdout.write(a[idx(i, j, c)])
+    pprint(a)
 
 main()
