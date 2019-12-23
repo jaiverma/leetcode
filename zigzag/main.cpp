@@ -1,3 +1,6 @@
+#include <iostream>
+#include <algorithm>
+
 class Solution {
 private:
     int r;
@@ -48,3 +51,10 @@ public:
         return arr;
     }
 };
+
+int main() {
+    Solution s = Solution();
+    std::string t = "PAYPALISHIRING";
+    int r = 3;
+    std::cout << s.convert(t, 3) << std::endl;
+}
